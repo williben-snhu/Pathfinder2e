@@ -31,8 +31,8 @@ int Table::checkRoll10(int& roll)
 	while (roll < 1 || roll > 10)
 	{
 		cout << "Please enter a number from 1 to 10" << endl;
-		cout << endl;
 		cin >> roll;
+		cout << endl;
 	}
 
 	cout << "Thank you. Your roll is: " << roll << endl;

@@ -90,7 +90,17 @@ void Hexploration::setRegion(int roll)
 		//If previousRoll has been set then it will run the function again with the previousRoll as the arguement
 		if (previousRoll == 0)
 		{
-			cout << "Reroll" << endl;
+			cout << "Reroll there is no current previousRoll" << endl;
+
+			cout << "Enter new roll: " << endl;
+
+			cin >> roll;
+
+			cout << endl;
+
+			checkRoll20(roll);
+
+			setRegionPreviousRoll(roll);
 		}
 		else
 		{
@@ -99,10 +109,9 @@ void Hexploration::setRegion(int roll)
 		break;
 	}
 
-	cout << endl;
-
 	//It will then output the previous roll which is for testing
-	cout << previousRoll << endl;
+	cout << "The previous roll is: " << previousRoll << endl;
+	cout << endl;
 
 	//Then it will request to see if the user wants to run the table again
 	cout << "Would you like to do another region?" << endl;
@@ -119,6 +128,7 @@ void Hexploration::setRegion(int roll)
 
 	//If they answer yes then it will request a new roll, check the roll, the redo the function
 	//If they answer no then it will say goodbye and output all the variables
+	//Otherwise the code will run the exception handling function which will just output the options above to prevent a rerun of the menu options and code
 	if (answerString == "yes")
 	{
 		cout << "Enter new roll: " << endl;
@@ -136,6 +146,56 @@ void Hexploration::setRegion(int roll)
 		cout << "Goodbye" << endl;
 		outputRegions();
 		cout << endl;
+	}
+	else
+	{
+		cout << "Incorrect entry put in either yes or no" << endl;
+		cout << endl;
+		setRegionExceptionHandling(answerString, roll);
+	}
+}
+
+void Hexploration::setRegionExceptionHandling(string& answerString, int& roll)
+{
+	//Then it will request to see if the user wants to run the table again
+	cout << "Would you like to do another region?" << endl;
+
+	cin >> answerString;
+
+	//This is to do some input verification and to change the answerString to all lowercase to make the if else if statement work out
+	std::for_each(answerString.begin(), answerString.end(), [](char& c)
+		{
+			c = ::tolower(c);
+		});
+
+	cout << endl;
+
+	//If they answer yes then it will request a new roll, check the roll, the redo the function
+	//If they answer no then it will say goodbye and output all the variables
+	//Otherwise the code will run the exception handling function which will just output the options above to prevent a rerun of the menu options and code
+	if (answerString == "yes")
+	{
+		cout << "Enter new roll: " << endl;
+
+		cin >> roll;
+
+		cout << endl;
+
+		checkRoll20(roll);
+
+		setRegion(roll);
+	}
+	else if (answerString == "no")
+	{
+		cout << "Goodbye" << endl;
+		outputRegions();
+		cout << endl;
+	}
+	else
+	{
+		cout << "Incorrect entry put in either yes or no" << endl;
+		cout << endl;
+		setRegionExceptionHandling(answerString, roll);
 	}
 }
 
@@ -204,7 +264,17 @@ void Hexploration::setRegionPreviousRoll(int roll)
 		//If previousRoll has been set then it will run the function again with the previousRoll as the arguement
 		if (previousRoll == 0)
 		{
-			cout << "Reroll" << endl;
+			cout << "Reroll there is no current previousRoll" << endl;
+
+			cout << "Enter new roll: " << endl;
+
+			cin >> roll;
+
+			cout << endl;
+
+			checkRoll20(roll);
+
+			setRegionPreviousRoll(roll);
 		}
 		else
 		{
@@ -225,16 +295,19 @@ void Hexploration::randomTerrainFeature(int roll)
 	case 2 :
 	case 3 :
 		cout << "Landmark: A feature of some significane that distinguishes the hex as noteworthy" << endl;
+		cout << endl;
 		break;
 	case 4 :
 	case 5 :
 	case 6 :
 		cout << "Secret: The hex contains a secret the party uncovers upon exploring the hex" << endl;
+		cout << endl;
 		break;
 	case 7 :
 	case 8 :
 	case 9 :
 		cout << "Resource: The hex contains some valuable resource appropriate to the terrain" << endl;
+		cout << endl;
 		break;
 	case 10 :
 	case 11 :
@@ -248,6 +321,7 @@ void Hexploration::randomTerrainFeature(int roll)
 	case 19 :
 	case 20 :
 		cout << "Standard: A standard representation of the terrain type" << endl;
+		cout << endl;
 		break;
 	}
 
@@ -266,6 +340,7 @@ void Hexploration::randomTerrainFeature(int roll)
 
 	//If they answer yes it will have the user enter a new roll, check the roll, and the rerun the function
 	//If they answer no then it will say goodbye
+	//Otherwise the code will run the exception handling function which will just output the options above to prevent a rerun of the menu options and code
 	if (answerString == "yes")
 	{
 		cout << "Enter new roll: " << endl;
@@ -282,5 +357,54 @@ void Hexploration::randomTerrainFeature(int roll)
 	{
 		cout << "Goodbye" << endl;
 		cout << endl;
+	}
+	else 
+	{
+		cout << "Incorrect entry put in either yes or no" << endl;
+		cout << endl;
+		randomTerrainFeatureExceptionHandling(answerString, roll);
+	}
+}
+
+void Hexploration::randomTerrainFeatureExceptionHandling(string& answerString, int& roll)
+{
+	//It will go through and see if the user wants to do the terrain feature again
+	cout << "Would you like to do another terrain feature?" << endl;
+
+	cin >> answerString;
+
+	//This is to do some input verification and to change the answerString to all lowercase to make the if else if statement work out
+	std::for_each(answerString.begin(), answerString.end(), [](char& c)
+		{
+			c = ::tolower(c);
+		});
+
+	cout << endl;
+
+	//If they answer yes it will have the user enter a new roll, check the roll, and the rerun the function
+	//If they answer no then it will say goodbye
+	//Otherwise the code will run the exception handling function which will just output the options above to prevent a rerun of the menu options and code
+	if (answerString == "yes")
+	{
+		cout << "Enter new roll: " << endl;
+
+		cin >> roll;
+
+		cout << endl;
+
+		checkRoll20(roll);
+
+		randomTerrainFeature(roll);
+	}
+	else if (answerString == "no")
+	{
+		cout << "Goodbye" << endl;
+		cout << endl;
+	}
+	else
+	{
+		cout << "Incorrect entry enter either yes or no" << endl;
+		cout << endl;
+		randomTerrainFeatureExceptionHandling(answerString, roll);
 	}
 }

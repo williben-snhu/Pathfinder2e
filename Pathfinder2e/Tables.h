@@ -34,6 +34,9 @@ class Encounter: public Table
 public:
 	void randomEncounterType(int roll); //This is a table that will display all the chances for each type of region
 	void randomEncounterChance(); //This is a table to display what encounter you will get based off the roll
+	void randomEncounterTypeExceptionHandling(int& roll, string& answerString); //This is to handle the exception if in the end the user does not put yes or no
+	void randomEncounterChanceExceptionHandling(string& answerString); //This is to handle the exception if in the end the user does not put yes or no
+	void randomEncounterChanceRedo(); //This is to handle the exception that the user inputs the incorrect information on the menu
 };
 
 //This class will have all the information in regards to the hexploration table
@@ -55,6 +58,8 @@ public:
 	void setRegionPreviousRoll(int roll); //This is a function to fix an issue that builds when leaving after calling for the previousRoll
 	void outputRegions(); //This will output all the region values
 	void randomTerrainFeature(int roll); //This will be used to see what terrain features there are
+	void randomTerrainFeatureExceptionHandling(string& answerString, int& roll); //This is to handle the exception if in the end the user does not put yes or no
+	void setRegionExceptionHandling(string& answerString, int& roll); //This is to handle the exception if in the end the user does not put yes or no
 };
 
 #endif // !Tables_H

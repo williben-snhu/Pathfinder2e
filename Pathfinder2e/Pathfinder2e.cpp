@@ -61,6 +61,7 @@ void menuChoices(int& answer, Table& table, Hexploration& hex, int& roll, Encoun
     //In the case of an invalid response the switch will have the user see the menu and make the choice again
     default :
         cout << "Invalid entry please reselect" << endl;
+        cout << endl;
 
         showMenu();
 
@@ -288,6 +289,7 @@ void showDiceAnswers(int& answer, Dice& dice, int& diceAnswer, Table& table, Hex
     //In the case of an invalid response the switch statement will show the menu again
     default :
         cout << "Invalid response try again" << endl;
+        cout << endl;
 
         showDiceMenu();
 
